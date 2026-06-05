@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "category": "homebrew",
+  "generated_at": "<ISO-8601>",
+  "source": { "os": "<...>", "build": "<...>", "arch": "arm64 | x86_64", "model": "<...>" },
+  "items": [
+    {
+      "id": "tap-<owner>-<repo>",
+      "name": "<owner>/<repo>",
+      "version": null,
+      "selected": true,
+      "install_method": "tap",
+      "apply": "brew tap <owner>/<repo>",
+      "verify": "brew tap | grep -qx <owner>/<repo> && echo present",
+      "expected": "present",
+      "post_apply": null,
+      "manual_url": null,
+      "notes": "<why this tap is needed>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "Homebrew Taps",
+      "size_hint": null
+    },
+    {
+      "id": "formula-<name>",
+      "name": "<name>",
+      "version": "<x.y.z>",
+      "selected": true,
+      "install_method": "formula",
+      "apply": "brew install <name>",
+      "verify": "brew list --versions <name>",
+      "expected": "<name> <x.y.z>",
+      "post_apply": null,
+      "manual_url": null,
+      "notes": "<purpose; note if it PROVIDES a runtime others depend on>",
+      "dependencies": [],
+      "requires_runtime": "<e.g. node@24.10.0, or null>",
+      "group": "Homebrew Formulae",
+      "size_hint": null
+    },
+    {
+      "id": "cask-<slug>",
+      "name": "<slug>",
+      "version": "<x.y.z>",
+      "selected": true,
+      "install_method": "cask",
+      "apply": "brew install --cask <slug>",
+      "verify": "brew list --cask --versions <slug>",
+      "expected": "<slug> <x.y.z>",
+      "post_apply": null,
+      "manual_url": null,
+      "notes": "<note any post-install steps, e.g. system-extension approval>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "Homebrew Casks",
+      "size_hint": null
+    }
+  ]
+}

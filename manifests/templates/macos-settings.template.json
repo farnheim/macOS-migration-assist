@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "category": "macos-settings",
+  "generated_at": "<ISO-8601>",
+  "source": { "os": "<...>", "build": "<...>", "arch": "arm64 | x86_64", "model": "<...>" },
+  "items": [
+    {
+      "id": "<domain-key>",
+      "name": "<Human label, e.g. Dock: autohide>",
+      "version": null,
+      "selected": true,
+      "install_method": "defaults",
+      "apply": "defaults write <domain> <key> -<type> <value>",
+      "verify": "defaults read <domain> <key>",
+      "expected": "<current value>",
+      "post_apply": "<killall Dock | killall Finder | killall SystemUIServer, or null>",
+      "manual_url": null,
+      "notes": "<what it does; note if it needs logout/login>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "<Appearance | Keyboard | Dock | Finder | Screenshots | Trackpad>",
+      "size_hint": null
+    },
+    {
+      "id": "icc-<profile>",
+      "name": "<Display / ICC profile>",
+      "version": null,
+      "selected": false,
+      "install_method": "copy",
+      "apply": "cp \"$HOME/migration/colorsync/<profile>.icc\" \"$HOME/Library/ColorSync/Profiles/\"",
+      "verify": "test -e \"$HOME/Library/ColorSync/Profiles/<profile>.icc\" && echo present",
+      "expected": "present",
+      "post_apply": null,
+      "manual_url": null,
+      "notes": "<Only for CUSTOM profiles. The .icc must be staged in manifests/colorsync/ and travel with the manifest. Stock Apple profiles: selected=false.>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "Display / Color",
+      "size_hint": null
+    },
+    {
+      "id": "security-<name>",
+      "name": "<SIP | Gatekeeper | FileVault | Firewall>",
+      "version": null,
+      "selected": false,
+      "install_method": "system",
+      "apply": null,
+      "verify": "<csrutil status | spctl --status | fdesetup status | /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate>",
+      "expected": "<current state>",
+      "post_apply": null,
+      "manual_url": null,
+      "notes": "<Informational ONLY. Never toggled automatically. Explain how to enable manually if desired.>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "Security",
+      "size_hint": null
+    }
+  ]
+}

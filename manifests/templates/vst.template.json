@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.1",
+  "category": "vst",
+  "generated_at": "<ISO-8601>",
+  "source": { "os": "<...>", "build": "<...>", "arch": "arm64 | x86_64", "model": "<...>" },
+  "items": [
+    {
+      "id": "vst-<vendor>-bundle",
+      "name": "<Vendor plugin bundle>",
+      "version": null,
+      "selected": true,
+      "install_method": "copy",
+      "apply": "for f in <PluginA> <PluginB>; do cp -R \"$HOME/migration/vst-payload/VST3/$f.vst3\" \"/Library/Audio/Plug-Ins/VST3/\"; done",
+      "verify": "test -e \"/Library/Audio/Plug-Ins/VST3/<PluginA>.vst3\" && echo present",
+      "expected": "present",
+      "post_apply": null,
+      "manual_url": "<vendor URL>",
+      "notes": "<Self-contained, copyable. Stage binaries into manifests/vst-payload/{VST,VST3,Components}/. NATIVE binaries — source.arch must match the target. Paid plugins may still need license entry on first launch (keep purchase email; do NOT store the key).>",
+      "dependencies": [],
+      "requires_runtime": null,
+      "group": "<Vendor>",
+      "size_hint": null
+    },
+    {
+      "id": "vst-<vendor>-installer",
+      "name": "<Vendor plugin (installer-based)>",
+      "version": null,
+      "selected": true,
+      "install_method": "manual",
+      "apply": null,
+      "verify": "test -e \"/Library/Audio/Plug-Ins/VST3/<Plugin>.vst3\" && echo present",
+      "expected": "present",
+      "post_apply": null,
+      "manual_url": "<vendor installer URL>",
+      "notes": "<Better installed via the vendor installer due to licensing. Some plugin sets install/license exclusively through a companion app — set dependencies: [\"app-<companion>\"] and keep selected in sync with that app.>",
+      "dependencies": ["<id of a required companion app/installer, or empty []>"],
+      "requires_runtime": "<e.g. companion app + vendor account/licenses, or null>",
+      "group": "<Vendor>",
+      "size_hint": null
+    }
+  ]
+}

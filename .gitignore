@@ -1,0 +1,17 @@
+# --- Generated migration data (personal inventory — never commit) -------------
+# Everything under manifests/ is a per-machine inventory produced by /collect +
+# /verify (app lists, versions, paths, hardware model, staged plugin/ICC binaries,
+# generated install/verify scripts and the migration report) — EXCEPT the tracked
+# schema templates. Ignore-by-default guards against accidentally committing
+# personal data; only manifests/templates/ is version-controlled.
+manifests/*
+!manifests/templates/
+
+# --- Local / personal Claude Code config --------------------------------------
+# Personal overrides (disabled MCP servers, machine-specific permission allows).
+# The shared, recommended permission model is documented in .claude/rules.md §1.
+.claude/settings.local.json
+
+# --- macOS / editor noise -----------------------------------------------------
+.DS_Store
+*.swp

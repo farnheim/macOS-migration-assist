@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.1",
+  "generated_at": "<ISO-8601, e.g. 2026-01-01T00:00:00Z>",
+  "source": {
+    "os": "<macOS x.y.z>",
+    "build": "<build id>",
+    "arch": "arm64 | x86_64",
+    "model": "<Mac model (chip, RAM)>"
+  },
+  "target": {
+    "os": "<intended target OS, e.g. macOS 15 (Sequoia)>",
+    "arch": "arm64 | x86_64",
+    "model": "<known target model or null>"
+  },
+  "reconciliation": [
+    "<warning strings written by /collect: arch match/mismatch, OS gap, deprecated casks, runtimes the target must provide, ...>"
+  ]
+}
