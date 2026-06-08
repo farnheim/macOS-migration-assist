@@ -11,6 +11,13 @@ They take priority over convenience and speed.
 - **`/verify`** (source) is the human-in-the-loop gate: the user confirms the selection there, and
   dependency consistency (rule 4) is enforced. It runs in the main conversation because `AskUserQuestion`
   does not work inside subagents.
+  - **Per-item selection, never bundled.** When the user customizes a category, present **every item
+    individually** for selection from the full list — do **not** collapse items into pre-made bundles
+    (e.g. "Dev tools", "Media CLI") or force an all-or-nothing group toggle. The `group` field is only a
+    display heading to organize the list; it is not a selectable unit. The single documented exception is
+    a manifest item that is *itself* an intentional bundle (e.g. the UAD suite as one `vst-uad-suite`
+    item) — that one toggles as the single item it already is. Because `AskUserQuestion` allows at most 4
+    options per question, page through the items across multiple questions rather than grouping them.
 - **`/migrate`** (target) applies only confirmed items, never with `sudo` / overwrite / security toggles
   without explicit consent (rule 5), and installs respecting `dependencies` order.
 

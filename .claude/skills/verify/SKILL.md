@@ -18,7 +18,7 @@ For each manifest:
      - **Keep current** — keep the heuristic selection from /collect.
      - **Customize** — drill into the category's groups.
      - **Skip all** — set every item `selected: false`.
-  c. If **Customize**: present the category's `group`s as AskUserQuestion options (multiSelect, ≤4 options per question, issue multiple questions if there are more groups). The user checks the groups/items to migrate; translate checks into `selected` flags. For large groups (e.g. UAD as one bundle item) treat the bundle as a single toggle.
+  c. If **Customize**: present **every item individually** as AskUserQuestion options (multiSelect, ≤4 options per question, page through with multiple questions). Do **not** collapse items into pre-made bundles or a per-`group` all-or-nothing toggle — `group` is only a display heading for organizing/ordering the list, not a selectable unit (see rules.md §0). The user checks the items to migrate; translate checks into `selected` flags. The sole exception is a manifest item that is *itself* an intentional bundle (e.g. the UAD suite as one `vst-uad-suite` item) — that toggles as the single item it already is.
 
 ## 2. Enforce dependency consistency (rule 4)
 After applying the user's choices, for every item now `selected: true` with a non-empty `dependencies`, ensure each dependency `id` is also selected. If a dependency is off, auto-enable it and tell the user why (or ask if it's a large/cost decision). Never leave a selected item with an unmet dependency. Known chains:
